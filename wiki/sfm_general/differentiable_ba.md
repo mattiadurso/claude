@@ -15,7 +15,7 @@ Meta's PyTorch library for differentiable nonlinear optimization (Pineda et al.,
 ### Core ideas
 - **Objective** = collection of weighted residual `CostFunction` objects over `Variable`s (poses on SE(3)/SO(3), points in ℝ³, learnable weights).
 - **Optimizers**: Gauss–Newton, Levenberg–Marquardt, Dogleg. Batched: solves many problem instances in parallel on GPU.
-- **Linear solvers**: dense Cholesky, sparse Cholesky (CHOLMOD via cusolverDN), or the **Baspacho** sparse solver for large block-sparse systems (which BA produces).
+- **Linear solvers**: dense Cholesky (PyTorch-native) plus three sparse solvers for the large block-sparse systems BA produces — **CHOLMOD** (CPU), **cudaLU** (GPU, Nvidia cuSolver), and **Baspacho** (batched GPU supernodal Cholesky).
 - **Differentiation modes**:
   - *Unrolled* — autograd through every LM step. Memory-heavy.
   - *Implicit* — differentiate through the optimality conditions at the converged solution. Constant memory in #iterations. Preferred for BA-scale problems.
@@ -44,7 +44,7 @@ End-to-end deep SfM: tracks → cameras → points, every stage differentiable.
 - Training requires posed datasets (Re10K, MegaDepth) — gauge ambiguity must be handled in the loss.
 
 ## Other differentiable optimizers
-- **PyPose** — PyTorch library with Lie-group support + LM. Used in EPO ([paper_md/EPO/SUMMARY.md](../EPO/SUMMARY.md)).
+- **PyPose** — PyTorch library with Lie-group support + LM. Used in EPO.
 - **DROID-SLAM** — custom CUDA differentiable dense BA over flow + depth; not a general library but the same idea.
 - **GBP / gauss-newton-net** — research prototypes for differentiable factor-graph inference.
 

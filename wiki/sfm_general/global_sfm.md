@@ -2,7 +2,9 @@
 
 Solves for all camera rotations first, then all translations + points, in one shot — instead of growing the model one image at a time. Historically less accurate than incremental SfM; GLOMAP closes that gap while remaining orders of magnitude faster.
 
-## Three-stage structure
+> **Status (2026):** GLOMAP's algorithm is now upstreamed into COLMAP as the native `GlobalMapper` (`src/colmap/sfm/global_mapper.cc`, backed by `estimators/rotation_averaging.cc` + `estimators/global_positioning.cc`). The standalone `colmap/glomap` repo is **archived/deprecated** — use COLMAP's built-in global mapper instead.
+
+## Pipeline structure
 
 1. **Front-end** — same as incremental: features, matches, view-graph verification, two-view geometries (relative `R_ij, t_ij` per pair).
 2. **Rotation averaging** — solve for global `{R_i}` consistent with pairwise `{R_ij}`.
@@ -47,6 +49,6 @@ Jointly solves for **camera positions and 3D points** in a single global problem
 ## Primary source
 
 - Pan, Baráth, Pollefeys, Schönberger, *Global Structure-from-Motion Revisited*, ECCV 2024. arXiv:2407.20219. Project page: https://lpanaf.github.io/eccv24_glomap/
-- Repo: https://github.com/colmap/glomap
+- Repo: https://github.com/colmap/glomap (archived — algorithm now lives in COLMAP's `GlobalMapper`)
 - Background: Chatterjee & Govindu, *Efficient and Robust Large-Scale Rotation Averaging*, ICCV 2013.
 - Wilson & Snavely, *Robust Global Translations with 1DSfM*, ECCV 2014.

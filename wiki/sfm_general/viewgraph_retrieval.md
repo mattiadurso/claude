@@ -44,6 +44,7 @@ After verification ([geometric_verification.md](geometric_verification.md)):
 - Sequential window: ±5 to ±20 frames for video.
 
 ## Sources
-- Sivic & Zisserman, *Video Google*, ICCV 2003 — vocab-tree retrieval foundation.
+- Sivic & Zisserman, *Video Google*, ICCV 2003 — bag-of-words / visual-words retrieval foundation.
+- Nistér & Stewénius, *Scalable Recognition with a Vocabulary Tree*, CVPR 2006 — the hierarchical vocabulary tree itself (basis for COLMAP's vocab-tree matcher).
 - Arandjelović et al., *NetVLAD*, CVPR 2016.
 - COLMAP retrieval: `src/colmap/retrieval/`. NetVLAD wrapping in **hloc** (https://github.com/cvg/Hierarchical-Localization).

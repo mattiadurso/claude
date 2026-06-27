@@ -34,7 +34,7 @@ Augments COLMAP's incremental pipeline with depth + normal priors throughout.
 - **Network-agnostic** — depth/normal networks are swappable with minimal re-tuning.
 
 ## Related lines
-- **DUSt3R / MASt3R / VGGT / MapAnything / π³** — 3D *foundation models* that go further: predict pose + depth jointly from N images in one forward pass, replacing the front-end+back-end split entirely. EPO ([paper_md/EPO/SUMMARY.md](../EPO/SUMMARY.md)) refines outputs from those models.
+- **DUSt3R / MASt3R / VGGT / MapAnything / π³** — 3D *foundation models* that go further: predict pose + depth jointly from N images in one forward pass, replacing the front-end+back-end split entirely. EPO refines outputs from those models.
 - **Hybrid SfM + diffusion priors** — research direction; expect more of this in 2026.
 
 ## Sources

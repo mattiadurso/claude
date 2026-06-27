@@ -40,7 +40,7 @@ The normal-equations matrix has block structure `[U W; Wᵀ V]` with `U` (camera
 
 ## Implementations
 
-- **Ceres** (Google) — de-facto standard for classical SfM (COLMAP, OpenMVG, etc.). C++, analytic + auto-diff Jacobians.
+- **Ceres** (Google) — de-facto standard for classical SfM (COLMAP, OpenMVG, etc.). C++, analytic + auto-diff Jacobians. Recent COLMAP also ships a second native BA backend, **CASPAR** (`src/colmap/estimators/bundle_adjustment_caspar.cc`), alongside the Ceres path (`bundle_adjustment_ceres.cc`).
 - **g2o** — graph-based optimization, popular in SLAM.
 - **GTSAM** — factor graphs, smoothing/incremental variants.
 - **Theseus / differentiable BA** — see [differentiable_ba.md](differentiable_ba.md) for end-to-end-trainable variants.

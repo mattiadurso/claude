@@ -11,7 +11,7 @@ The front-end of classical SfM. Quality here caps the quality of everything down
 
 ### Learned local features
 - **SuperPoint** (DeTone et al. 2018) — joint detector + descriptor, single CNN forward pass. Self-supervised via homographic adaptation.
-- **R2D2, ALIKED, DISK, DeDoDe** — learned features with various detect/describe trade-offs; ALIKED and DeDoDe are current SOTA on IMC.
+- **R2D2, ALIKED, DISK, DeDoDe** — learned features with various detect/describe trade-offs; ALIKED and DeDoDe are current SOTA on IMC. COLMAP now ships **ALIKED** extraction and **ONNX-based learned matchers** natively (`feature/aliked.cc`, `feature/onnx_matchers.cc`) — learned front-ends are no longer external-only.
 - **HardNet, SOSNet** — descriptor-only networks (used on top of classical detectors).
 
 ### Practical knobs
@@ -59,9 +59,9 @@ A **track** = a connected component of correspondences across multiple images, i
 VGGSfM-style pipelines bypass match-then-chain: a deep multi-frame tracker (CoTracker, TAPIR) outputs full tracks directly, avoiding fragmentation from missed pairwise matches. See [differentiable_ba.md](differentiable_ba.md).
 
 ## Implementation references
-- COLMAP feature extraction: `src/colmap/feature/sift.cc`
-- COLMAP matching: `src/colmap/feature/matching.cc`
-- COLMAP track building: inside the incremental mapper, `IncrementalMapper::CreateTrack` / `MergeTracks`
+- COLMAP feature extraction: `src/colmap/feature/sift.cc` (also `aliked.cc` for learned features)
+- COLMAP matching: `src/colmap/feature/matcher.cc` (also `onnx_matchers.cc` for learned matchers)
+- COLMAP track building: `IncrementalTriangulator` in `src/colmap/sfm/incremental_triangulator.cc` — `Create` / `Merge` / `Complete` (public `MergeTracks` / `CompleteTracks`)
 - hloc (https://github.com/cvg/Hierarchical-Localization) wraps SuperPoint+SuperGlue+COLMAP cleanly.
 
 ## Sources

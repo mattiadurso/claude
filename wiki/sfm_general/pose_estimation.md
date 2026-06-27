@@ -39,7 +39,7 @@ Given 2D–2D correspondences between two views (calibrated or uncalibrated), re
 Choice matters for gradient-based optimization (BA, learned refinement):
 - **Quaternion** — 4D unit norm; classical, requires renormalization.
 - **Axis-angle (so(3))** — 3D, used in Ceres via local parametrization.
-- **6D continuous** (Zhou et al. 2019) — first two columns of `R`, Gram–Schmidt to recover orthonormal `R`; smooth for neural-net regression. Used in EPO (see [paper_md/EPO/SUMMARY.md](../EPO/SUMMARY.md)).
+- **6D continuous** (Zhou et al. 2019) — first two columns of `R`, Gram–Schmidt to recover orthonormal `R`; smooth for neural-net regression. Used in EPO.
 
 ## Sources
 - Hartley & Zisserman, *Multiple View Geometry* (2nd ed., 2004) — canonical reference.
