@@ -7,9 +7,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Behavioral guidelines to reduce common LLM coding mistakes. **Tradeoff:** these bias toward caution over speed. For trivial tasks, use judgment.
 
 ### 0. Code Style
-- ..
 - Functions should stay short and single-purpose.
 - Prefer explicit imports over wildcard imports.
+- Use Google guideline style for python. Including linting and ruff.
+- Ignore IDEAS.md files. Don't load them, those are for the humans.
 
 ### 1. Read Before You Write
 
@@ -41,6 +42,7 @@ Before implementing:
 - No abstractions for single-use code.
 - No "flexibility" or "configurability" that wasn't requested.
 - No error handling for impossible scenarios.
+- Re-use code if possible. This includes checking other scripts, starting from the helpers folder. Eventually propose to modify an existing helper function rather than creating a brand new similar one.
 - If you write 200 lines and it could be 50, rewrite it.
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
@@ -85,7 +87,7 @@ For multi-step tasks, state a brief plan:
 3. [Step] → verify: [check]
 ```
 
-- Keep tests in `..`.
+- Keep tests in the project's designated test directory (see CLAUDE.local.md).
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
@@ -127,6 +129,13 @@ When making git commits, always use:
   git -c user.name="mattiadurso" -c user.email="mattiadurso98@gmail.com" commit ...
 
 No co-authors or other contributors are allowed. 
+
+### Local & Project-Specific Knowledge
+- This file is **project-agnostic** — reuse it across repos unchanged.
+- Anything tied to a specific repo (what the project is, directory layout, file paths,
+  dataset/metric names, device/GPU conventions, build stages, numeric invariants)
+  belongs in **CLAUDE.local.md**, not here.
+- Import CLAUDE.local.md if present.
 
 ## Knowledge Base (Wiki)
 
@@ -178,4 +187,6 @@ Rules for a self-maintaining, LLM-curated knowledge base. **Model:** the human o
 
 ## Repo Related
 
-..
+Project-specific knowledge for the current repository (what the project is, key design
+ideas, directory layout, device selection, build stages, metric invariants, test
+locations) lives in **CLAUDE.local.md** — see that file. Keep this file generic.

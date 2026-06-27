@@ -1,3 +1,5 @@
 raw/
 .claude/
 .DS_Store
+# Per-project knowledge — never committed to the shared claude/ repo.
+CLAUDE.local.md
