@@ -44,6 +44,9 @@ Before implementing:
 - No error handling for impossible scenarios.
 - Re-use code if possible. This includes checking other scripts, starting from the helpers folder. Eventually propose to modify an existing helper function rather than creating a brand new similar one.
 - If you write 200 lines and it could be 50, rewrite it.
+- Torch code:
+  - use Dataset class to manage data laoding
+  - use Dataloder class to manage parallelism/muli multiworker. Dont invent threadpools for this, it's not worthy. 
 
 Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
